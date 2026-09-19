@@ -47,7 +47,7 @@
     <script>
       const ctx = new AudioContext();
       ctx.suspend();
-      let freq = 110;
+      let freq = 261.63; // C4
 
       const osc1 = new OscillatorNode(ctx);
       osc1.type = "triangle";
@@ -55,11 +55,11 @@
 
       const osc2 = new OscillatorNode(ctx);
       osc2.type = "triangle";
-      osc2.frequency.value = freq * 0.99;
+      osc2.frequency.value = freq * 2;
 
       const osc3 = new OscillatorNode(ctx);
       osc3.type = "triangle";
-      osc3.frequency.value = freq * 0.7;
+      osc3.frequency.value = freq * 2;
 
       const gain1 = new GainNode(ctx);
       gain1.gain.value = 0.1;
@@ -74,7 +74,7 @@
 
       // Second set of oscillators
 
-      let freq2 = 220;
+      let freq2 = 329.63; // E4
 
       const osc4 = new OscillatorNode(ctx);
       osc4.type = "sine";
@@ -82,11 +82,11 @@
 
       const osc5 = new OscillatorNode(ctx);
       osc5.type = "sine";
-      osc5.frequency.value = freq2 * 0.89;
+      osc5.frequency.value = freq2 * 2;
 
       const osc6 = new OscillatorNode(ctx);
       osc6.type = "sine";
-      osc6.frequency.value = freq2 * 1.4;
+      osc6.frequency.value = freq2 * 3;
 
       const gain2 = new GainNode(ctx);
       gain2.gain.value = 0.1;
@@ -101,7 +101,7 @@
 
       // third set
 
-      let freq3 = 440;
+      let freq3 = 392.0; // G4
 
       const osc7 = new OscillatorNode(ctx);
       osc7.type = "sine";
@@ -109,11 +109,11 @@
 
       const osc8 = new OscillatorNode(ctx);
       osc8.type = "sine";
-      osc8.frequency.value = freq3 * 0.89;
+      osc8.frequency.value = freq3 * 2;
 
       const osc9 = new OscillatorNode(ctx);
       osc9.type = "sine";
-      osc9.frequency.value = freq3 * 1.4;
+      osc9.frequency.value = freq3 * 3;
 
       const gain3 = new GainNode(ctx);
       gain3.gain.value = 0.1;
@@ -130,8 +130,8 @@
       slider1.addEventListener("input", () => {
         ctx.resume();
         osc1.frequency.value = freq * Number(slider1.value);
-        osc2.frequency.value = freq * Number(slider1.value) * 2;
-        osc3.frequency.value = freq * Number(slider1.value) * 3;
+        osc2.frequency.value = freq * Number(slider1.value);
+        osc3.frequency.value = freq * Number(slider1.value);
         document.querySelector("#freqDisplay").textContent = slider1.value;
       });
 
@@ -139,8 +139,8 @@
       slider2.addEventListener("input", () => {
         ctx.resume();
         osc4.frequency.value = freq2 * Number(slider2.value);
-        osc5.frequency.value = freq2 * Number(slider2.value) * 3;
-        osc6.frequency.value = freq2 * Number(slider2.value) * 7;
+        osc5.frequency.value = freq2 * Number(slider2.value);
+        osc6.frequency.value = freq2 * Number(slider2.value);
         document.querySelector("#freqDisplay2").textContent = slider2.value;
       });
 
@@ -148,8 +148,8 @@
       slider3.addEventListener("input", () => {
         ctx.resume();
         osc7.frequency.value = freq3 * Number(slider3.value);
-        osc8.frequency.value = freq3 * Number(slider3.value) * 3;
-        osc9.frequency.value = freq3 * Number(slider3.value) * 7;
+        osc8.frequency.value = freq3 * Number(slider3.value);
+        osc9.frequency.value = freq3 * Number(slider3.value);
         document.querySelector("#freqDisplay3").textContent = slider3.value;
       });
 
